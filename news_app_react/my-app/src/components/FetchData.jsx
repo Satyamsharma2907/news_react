@@ -6,8 +6,11 @@ import Loader from './Loader';
 const FetchData = () => {
     const [data,setData]=useState([]);
     const[loading,setLoading]= useState(true);
+    console.log("process env",process.env.REACT_APP_API_KEY);
+    
+    const api_key= process.env.REACT_APP_API_KEY;
     const fetchData = async()=>{
-        await axios.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=8a46ade9d1994d958f4624f9c6dc9100"
+        await axios.get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${api_key}`
     
         ).then((res)=>{
             console.log(res.data.articles)
